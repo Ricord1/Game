@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://3annhfry1yo5"
+path="res://.godot/imported/digital-thermometer.mp3-383d52fbcb6e7970e8fb3ee3234500f0.mp3str"
+
+[deps]
+
+source_file="res://PSX Nature Volume 1/LowPoly Nature Textures/digital-thermometer.mp3"
+dest_files=["res://.godot/imported/digital-thermometer.mp3-383d52fbcb6e7970e8fb3ee3234500f0.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

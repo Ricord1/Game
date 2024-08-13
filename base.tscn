@@ -1,0 +1,185 @@
+[gd_scene load_steps=26 format=3 uid="uid://ctap5770r847e"]
+
+[ext_resource type="Script" path="res://CharacterBody3D.gd" id="1_i728q"]
+[ext_resource type="PackedScene" uid="uid://d08swl7tvkkap" path="res://Exploration objects/Flashlight/Flashlight.fbx" id="2_xvw6b"]
+[ext_resource type="AudioStream" uid="uid://c8flgr6eqitwr" path="res://Exploration objects/Flashlight/temnyiy-les-polnyiy-tayn-2127.mp3" id="3_hglqr"]
+[ext_resource type="AudioStream" uid="uid://boxgrr2soiovc" path="res://Exploration objects/Flashlight/dyhanie-zapyhavshegosja-cheloveka (mp3cut.net).mp3" id="4_0ndlf"]
+[ext_resource type="AudioStream" uid="uid://j20gdcbp7k0b" path="res://Exploration objects/Flashlight/byistraya-hodba-po-betonnoy-poverhnosti-26128 (mp3cut.net) (1).mp3" id="5_a6m0s"]
+[ext_resource type="PackedScene" uid="uid://b7bggv1mm57dj" path="res://Exploration objects/Thermometer/Thermometer.fbx" id="7_6ssff"]
+[ext_resource type="PackedScene" uid="uid://bt3infdnl2xoo" path="res://Exploration objects/Photo_Camera/Flashlight_Poquet.fbx" id="7_xyid8"]
+[ext_resource type="FontFile" uid="uid://o4bmstykfudj" path="res://HomeVideo-Regular.otf" id="8_mltyn"]
+[ext_resource type="Script" path="res://Exploration objects/Thermometer/Thermometer.gd" id="8_qoibr"]
+[ext_resource type="Texture2D" uid="uid://fut7cuh3pyxk" path="res://Exploration objects/Flashlight/512x512/Grass/Grass_01-512x512.png" id="9_mudut"]
+[ext_resource type="AudioStream" uid="uid://ba4padhknj5gg" path="res://digital-thermometer.mp3" id="10_davit"]
+[ext_resource type="PackedScene" uid="uid://cgodhu40kmk6k" path="res://Hazmat/Hazmat_Character.tscn" id="11_p8r21"]
+[ext_resource type="Texture2D" uid="uid://dco5q2215fvwm" path="res://Exploration objects/Flashlight/512x512/Tile/Tile_02-512x512.png" id="12_6i5fy"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1ih5y"]
+margin = 0.0
+radius = 0.2
+height = 1.0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_uo0sv"]
+viewport_path = NodePath("CharacterBody3D/Root Scene/Root Scene3/Sprite3D/SubViewport")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ycysn"]
+size = Vector3(14.855, 0.67, 14.08)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x3hmx"]
+albedo_texture = ExtResource("9_mudut")
+uv1_scale = Vector3(30, 30, 30)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8gdgy"]
+albedo_texture = ExtResource("12_6i5fy")
+uv1_scale = Vector3(20, 20, 20)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ce5wu"]
+material = SubResource("StandardMaterial3D_8gdgy")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3od2h"]
+albedo_texture = ExtResource("12_6i5fy")
+uv1_scale = Vector3(30, 30, 30)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m6sa5"]
+sky_top_color = Color(0, 0.468573, 0.749288, 1)
+
+[sub_resource type="Sky" id="Sky_ekx0u"]
+sky_material = SubResource("ProceduralSkyMaterial_m6sa5")
+process_mode = 1
+
+[sub_resource type="Environment" id="Environment_xvghs"]
+background_mode = 2
+background_color = Color(1, 1, 1, 1)
+sky = SubResource("Sky_ekx0u")
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 16.0
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
+sdfgi_use_occlusion = true
+glow_enabled = true
+glow_normalized = true
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_f2feg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ygunx"]
+
+[node name="Node3D" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.101284, 0.025835, -0.0499182)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 10.4949, 5.99945, -19.4064)
+visible = false
+shadow_enabled = true
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00351048, 1.11946, -0.0358933)
+script = ExtResource("1_i728q")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("CapsuleShape3D_1ih5y")
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
+transform = Transform3D(0.999981, 0.004679, 0.00400436, -0.00470184, 0.999973, 0.00571458, -0.00397751, -0.0057333, 0.999976, 0.0027428, 0.296825, -0.0788113)
+
+[node name="GUI" type="Control" parent="CharacterBody3D/Camera3D"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ProgressBar" type="ProgressBar" parent="CharacterBody3D/Camera3D/GUI"]
+layout_mode = 0
+offset_left = 724.0
+offset_top = 983.0
+offset_right = 1191.0
+offset_bottom = 1024.0
+max_value = 1000.0
+value = 100.0
+show_percentage = false
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="CharacterBody3D/Camera3D"]
+stream = ExtResource("3_hglqr")
+volume_db = -76.19
+max_db = 1.17
+autoplay = true
+
+[node name="AudioStreamPlayer3D3" type="AudioStreamPlayer3D" parent="CharacterBody3D/Camera3D"]
+stream = ExtResource("4_0ndlf")
+volume_db = -28.545
+
+[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="CharacterBody3D/Camera3D"]
+transform = Transform3D(1, 9.54969e-12, 0, 9.54969e-12, 1, 0, 0, 0, 1, 0.000341997, -0.745236, -0.00304884)
+stream = ExtResource("5_a6m0s")
+
+[node name="Root Scene2" parent="CharacterBody3D/Camera3D" instance=ExtResource("7_xyid8")]
+transform = Transform3D(-0.963333, -0.161407, 0.214331, -0.189841, 0.974532, -0.119369, -0.189605, -0.155681, -0.96944, 0.0921842, -0.12191, -0.218189)
+visible = false
+
+[node name="Root Scene" parent="CharacterBody3D" instance=ExtResource("11_p8r21")]
+transform = Transform3D(-0.435039, 0, 0.0306381, 0, 0.350217, 0, -0.0272484, 0, -0.489159, 0, -0.352016, 0)
+
+[node name="Root Scene3" parent="CharacterBody3D/Root Scene" instance=ExtResource("7_6ssff")]
+transform = Transform3D(2.27254, 0.0274124, -0.312913, -0.128991, 2.76664, -0.694432, 0.263716, 0.504108, 1.9594, -0.226207, 1.65326, 0.716614)
+script = ExtResource("8_qoibr")
+
+[node name="Sprite3D" type="Sprite3D" parent="CharacterBody3D/Root Scene/Root Scene3"]
+transform = Transform3D(-0.0471844, -0.00144242, 0.000359523, -0.00159648, 0.0424766, 7.30022e-05, -0.00127843, 0.000193267, -0.0133606, -0.10522, -0.0693119, -0.0445333)
+texture = SubResource("ViewportTexture_uo0sv")
+
+[node name="SubViewport" type="SubViewport" parent="CharacterBody3D/Root Scene/Root Scene3/Sprite3D"]
+transparent_bg = true
+
+[node name="Label" type="Label" parent="CharacterBody3D/Root Scene/Root Scene3/Sprite3D/SubViewport"]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_mltyn")
+text = "ОЖИД."
+horizontal_alignment = 1
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="CharacterBody3D/Root Scene/Root Scene3"]
+stream = ExtResource("10_davit")
+
+[node name="Root Scene" parent="CharacterBody3D/Root Scene" instance=ExtResource("2_xvw6b")]
+transform = Transform3D(-1.08559, 0.00401326, 0.0343686, 0.0127465, 1.25411, 0.42351, -0.0215656, 0.218681, -1.24061, 0.221954, 2.1958, 0.32435)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="CharacterBody3D/Root Scene/Root Scene"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00194687, -0.174024, 0.00410891)
+shape = SubResource("BoxShape3D_ycysn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(14.8839, 0, 0, 0, 0.0972761, 0, 0, 0, 13.7301, 0.00625145, 0.0854725, 0.172414)
+material_override = SubResource("StandardMaterial3D_x3hmx")
+mesh = SubResource("BoxMesh_ce5wu")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13.7274)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00194687, -0.174024, 0.00410891)
+shape = SubResource("BoxShape3D_ycysn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2"]
+transform = Transform3D(14.8839, 0, 0, 0, 0.0972761, 0, 0, 0, 13.7301, 0.00625145, 0.0854725, 0.172414)
+material_override = SubResource("StandardMaterial3D_3od2h")
+mesh = SubResource("BoxMesh_ce5wu")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_xvghs")
+camera_attributes = SubResource("CameraAttributesPractical_f2feg")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00678158, 1.47442, -13.9188)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+shape = SubResource("BoxShape3D_ygunx")
+
+[connection signal="body_entered" from="Area3D" to="CharacterBody3D/Root Scene/Root Scene3" method="_on_area_3d_body_entered"]

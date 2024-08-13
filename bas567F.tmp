@@ -1,0 +1,139 @@
+[gd_scene load_steps=20 format=3 uid="uid://ctap5770r847e"]
+
+[ext_resource type="Script" path="res://CharacterBody3D.gd" id="1_i728q"]
+[ext_resource type="PackedScene" uid="uid://d08swl7tvkkap" path="res://Exploration objects/Flashlight/Flashlight.fbx" id="2_xvw6b"]
+[ext_resource type="AudioStream" uid="uid://c8flgr6eqitwr" path="res://Exploration objects/Flashlight/temnyiy-les-polnyiy-tayn-2127.mp3" id="3_hglqr"]
+[ext_resource type="AudioStream" uid="uid://boxgrr2soiovc" path="res://Exploration objects/Flashlight/dyhanie-zapyhavshegosja-cheloveka (mp3cut.net).mp3" id="4_0ndlf"]
+[ext_resource type="AudioStream" uid="uid://j20gdcbp7k0b" path="res://Exploration objects/Flashlight/byistraya-hodba-po-betonnoy-poverhnosti-26128 (mp3cut.net) (1).mp3" id="5_a6m0s"]
+[ext_resource type="PackedScene" uid="uid://b7bggv1mm57dj" path="res://Exploration objects/Thermometer/Thermometer.fbx" id="7_6ssff"]
+[ext_resource type="PackedScene" uid="uid://bt3infdnl2xoo" path="res://Exploration objects/Photo_Camera/Flashlight_Poquet.fbx" id="7_xyid8"]
+[ext_resource type="FontFile" uid="uid://o4bmstykfudj" path="res://HomeVideo-Regular.otf" id="8_mltyn"]
+[ext_resource type="Texture2D" uid="uid://fut7cuh3pyxk" path="res://Exploration objects/Flashlight/512x512/Grass/Grass_01-512x512.png" id="9_mudut"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1ih5y"]
+margin = 0.0
+radius = 0.2
+height = 1.0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_uo0sv"]
+viewport_path = NodePath("CharacterBody3D/Camera3D/Root Scene3/Sprite3D/SubViewport")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ycysn"]
+size = Vector3(14.855, 0.67, 14.08)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x3hmx"]
+albedo_texture = ExtResource("9_mudut")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8gdgy"]
+albedo_texture = ExtResource("9_mudut")
+
+[sub_resource type="BoxMesh" id="BoxMesh_ce5wu"]
+material = SubResource("StandardMaterial3D_8gdgy")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m6sa5"]
+sky_top_color = Color(0, 0.468573, 0.749288, 1)
+
+[sub_resource type="Sky" id="Sky_ekx0u"]
+sky_material = SubResource("ProceduralSkyMaterial_m6sa5")
+process_mode = 1
+
+[sub_resource type="Environment" id="Environment_xvghs"]
+background_mode = 2
+background_color = Color(1, 1, 1, 1)
+sky = SubResource("Sky_ekx0u")
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 16.0
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
+sdfgi_use_occlusion = true
+glow_enabled = true
+glow_normalized = true
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_f2feg"]
+
+[node name="Node3D" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.101284, 0.025835, -0.0499182)
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00351048, 0.6918, -0.0358933)
+script = ExtResource("1_i728q")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("CapsuleShape3D_1ih5y")
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
+transform = Transform3D(0.999999, 0.000452326, 0.00159807, -0.000458861, 0.999992, 0.00409106, -0.00159621, -0.00409178, 0.99999, 0.0027428, 0.296825, -0.20319)
+
+[node name="GUI" type="Control" parent="CharacterBody3D/Camera3D"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ProgressBar" type="ProgressBar" parent="CharacterBody3D/Camera3D/GUI"]
+layout_mode = 0
+offset_left = 724.0
+offset_top = 983.0
+offset_right = 1191.0
+offset_bottom = 1024.0
+max_value = 1000.0
+value = 100.0
+show_percentage = false
+
+[node name="Root Scene" parent="CharacterBody3D/Camera3D" instance=ExtResource("2_xvw6b")]
+transform = Transform3D(0.996155, 0.0054996, -0.0874414, -0.0249658, 0.97447, -0.223128, 0.0839818, 0.224453, 0.970859, -0.179509, -0.131473, -0.224021)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="CharacterBody3D/Camera3D/Root Scene"]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="CharacterBody3D/Camera3D"]
+stream = ExtResource("3_hglqr")
+volume_db = -56.38
+autoplay = true
+
+[node name="AudioStreamPlayer3D3" type="AudioStreamPlayer3D" parent="CharacterBody3D/Camera3D"]
+stream = ExtResource("4_0ndlf")
+volume_db = -28.545
+
+[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="CharacterBody3D/Camera3D"]
+transform = Transform3D(1, 9.54969e-12, 0, 9.54969e-12, 1, 0, 0, 0, 1, 0.000341997, -0.745236, -0.00304884)
+stream = ExtResource("5_a6m0s")
+
+[node name="Root Scene2" parent="CharacterBody3D/Camera3D" instance=ExtResource("7_xyid8")]
+transform = Transform3D(-0.963333, -0.161407, 0.214331, -0.189841, 0.974532, -0.119369, -0.189605, -0.155681, -0.96944, 0.0921842, -0.12191, -0.218189)
+visible = false
+
+[node name="Root Scene3" parent="CharacterBody3D/Camera3D" instance=ExtResource("7_6ssff")]
+transform = Transform3D(-0.979575, -5.25252e-05, 0.20108, -0.0486669, 0.970331, -0.236831, -0.195102, -0.241779, -0.950515, 0.118749, -0.0858685, -0.180653)
+
+[node name="Sprite3D" type="Sprite3D" parent="CharacterBody3D/Camera3D/Root Scene3"]
+transform = Transform3D(-0.0471844, -0.00144242, 0.000359523, -0.00159648, 0.0424766, 7.30022e-05, -0.00127843, 0.000193267, -0.0133606, -0.10522, -0.0693119, -0.0445333)
+texture = SubResource("ViewportTexture_uo0sv")
+
+[node name="SubViewport" type="SubViewport" parent="CharacterBody3D/Camera3D/Root Scene3/Sprite3D"]
+transparent_bg = true
+
+[node name="Label" type="Label" parent="CharacterBody3D/Camera3D/Root Scene3/Sprite3D/SubViewport"]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_mltyn")
+text = "42°C"
+horizontal_alignment = 1
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00194687, -0.195858, 0.00410891)
+shape = SubResource("BoxShape3D_ycysn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(14.8839, 0, 0, 0, 0.0972761, 0, 0, 0, 13.7301, 0.00625145, 0.0854725, 0.172414)
+material_override = SubResource("StandardMaterial3D_x3hmx")
+mesh = SubResource("BoxMesh_ce5wu")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_xvghs")
+camera_attributes = SubResource("CameraAttributesPractical_f2feg")

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://boxgrr2soiovc"
+path="res://.godot/imported/dyhanie-zapyhavshegosja-cheloveka (mp3cut.net).mp3-929a4c114f0f8dfc801edd9324f96959.mp3str"
+
+[deps]
+
+source_file="res://Exploration objects/Flashlight/dyhanie-zapyhavshegosja-cheloveka (mp3cut.net).mp3"
+dest_files=["res://.godot/imported/dyhanie-zapyhavshegosja-cheloveka (mp3cut.net).mp3-929a4c114f0f8dfc801edd9324f96959.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
