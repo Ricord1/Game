@@ -59,6 +59,8 @@ func _physics_process(delta):
 			if stamine > 0:
 				stamine -= 5
 				print(stamine)
+			if $"Root Scene2/AnimationPlayer2".is_playing():
+				$"Root Scene2/AnimationPlayer2".play("mixamo_com (2)")
 	if  Input.is_action_just_released("RUN") or recovery:
 		$Camera3D.fov = 85
 		SPEED = 5.0
@@ -73,6 +75,7 @@ func _physics_process(delta):
 		velocity.z = direction.z * SPEED
 		if !$Camera3D/AudioStreamPlayer3D2.playing and is_on_floor():
 			$Camera3D/AudioStreamPlayer3D2.play()
+		$"Root Scene2/AnimationPlayer2".play("mixamo_com")
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
